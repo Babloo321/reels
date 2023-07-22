@@ -1,0 +1,31 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+    text-align: center;
+    flex-direction: column;
+}
+.login-card{
+    width: 25rem;
+    /* height: 25rem; */
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+
+.bottom-card{
+width: 25rem;
+margin-top: 1rem;
+padding: 1rem;
+border: 1px solid #ccc;
+}
+
+@media  only screen and (max-width: 500px) {
+    .login-card{
+        width: 100%;
+
+    }
+    .bottom-card{
+        width: 100%;
+    }
+}
