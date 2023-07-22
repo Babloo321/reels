@@ -3,10 +3,29 @@ import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import insta from "../../assets/instagram.jpeg";
 import Button from '@mui/material/Button';
+import { CarouselProvider, Slider, Slide,Image as Img } from 'pure-react-carousel';  // carousel
+// for background image
+import bg1 from '../../assets/bg1.jpg';
+import bg2 from '../../assets/bg2.jpg';
+import bg3 from '../../assets/bg3.jpg';
 export default function login() {
   return (
     <div className="login-container">
-        
+        <div className="carbg">
+          <div className="car">
+          <CarouselProvider
+        naturalSlideWidth={241}
+        naturalSlideHeight={423}
+        totalSlides={3}
+        visibleSlides={1}
+      >
+        <Slider>
+         <Img src= {bg1} />
+        </Slider>
+      </CarouselProvider>
+          </div>
+        </div>
+        <div>
       <div className="login-card">
         <Image src={insta} />
         {/* Text area for the Email */}
@@ -44,6 +63,7 @@ export default function login() {
         <span style={{color:'blue'}}>
           SignUp
           </span>
+      </div>
       </div>
     </div>
   );

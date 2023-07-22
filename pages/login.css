@@ -4,7 +4,7 @@
     align-items: center;
     margin-top: 8rem;
     text-align: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 .login-card{
     width: 25rem;
@@ -18,6 +18,22 @@ width: 25rem;
 margin-top: 1rem;
 padding: 1rem;
 border: 1px solid #ccc;
+}
+
+.carbg{
+    background-image: url("../assets/insta-mob-bg.png");;
+    background-size: cover;
+    height: 590px;
+    width: 441px;
+    position: relative;
+}
+.car{
+    height: 423px;
+    width: 241px;
+    position: absolute;
+    top: 93px;
+    left: 143px;
+    /* z-index: 1; */
 }
 
 @media  only screen and (max-width: 500px) {

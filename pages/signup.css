@@ -15,9 +15,15 @@
 
 .bottom-card{
 width: 25rem;
+border: 1px solid #ccc;
 margin-top: 1rem;
 padding: 1rem;
-border: 1px solid #ccc;
+}
+.tnc{
+    width: 25rem;
+    margin-top: 1rem;
+    /* padding: 1rem; */
+    color: gray;
 }
 
 @media  only screen and (max-width: 500px) {

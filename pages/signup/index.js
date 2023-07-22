@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import insta from "../../assets/instagram.jpeg";
 import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import IconButton from '@mui/material/IconButton';
 export default function Signup() {
   return (
     <div className="signup-container">
@@ -10,18 +12,18 @@ export default function Signup() {
         <Image src={insta} />
         {/* Text area for the Email */}
         <TextField
+          id="outlined-basic"
           size="small"
           margin="dense"
-          id="outlined-basic"
           fullWidth
           label="Email"
           variant="outlined"
         />
         {/* Text area for the Password */}
         <TextField
+          id="outlined-basic"
           size="small"
           margin="dense"
-          id="outlined-basic"
           fullWidth
           label="Password"
           type="password"
@@ -29,25 +31,37 @@ export default function Signup() {
         />
         {/* Text area for the full name */}
         <TextField
+          id="outlined-basic"
           size="small"
           margin="dense"
-          id="outlined-basic"
           fullWidth
           label="Full Name"
           variant="outlined"
         />
         {/* this is button for the upload and hidden the image url */}
-        <Button variant="outlined" fullWidth 
-        component="label" style={{marginTop:'1rem'}}>
-            <input type="file" accept="img/*"
-            style={{display:'none', marginRight:'0.5rem'}}/>
-          Upload
+        <Button 
+        color="secondary"
+        variant="outlined" 
+        fullWidth 
+        component="label"
+        size="small"
+          >
+        <input hidden type="file" accept="img/*"/>
+        <IconButton color="secondary">
+          <CloudUploadIcon/>
+        </IconButton>
+          Upload Profile Imgage
         </Button>
 
+        <div className="tnc">
+          By signing up, you agree to our Terms, Conditions and Cookies policy.
+        </div>
+
         {/* this button for the signup click */}
-        <Button variant="contained"  
+        <Button 
+        variant="contained"  
         fullWidth
-        component="span" style={{marginTop:'1rem'}}>
+        component="span" style={{marginTop:'0.5rem'}}>
           Sign up
         </Button>
       </div>
