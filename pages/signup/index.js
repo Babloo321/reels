@@ -52,11 +52,6 @@ export default function Signup() {
         </IconButton>
           Upload Profile Imgage
         </Button>
-
-        <div className="tnc">
-          By signing up, you agree to our Terms, Conditions and Cookies policy.
-        </div>
-
         {/* this button for the signup click */}
         <Button 
         variant="contained"  
@@ -64,6 +59,11 @@ export default function Signup() {
         component="span" style={{marginTop:'0.5rem'}}>
           Sign up
         </Button>
+
+        <div className="tnc">
+          By signing up, you agree to our Terms, Conditions and Cookies policy.
+        </div>
+
       </div>
       <div className="bottom-card">
         Already Have an Account? 

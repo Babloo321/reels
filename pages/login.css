@@ -8,7 +8,7 @@
 }
 .login-card{
     width: 25rem;
-    /* height: 25rem; */
+    height: 18rem;
     padding: 1rem;
     border: 1px solid #ccc;
 }
@@ -20,20 +20,26 @@ padding: 1rem;
 border: 1px solid #ccc;
 }
 
-.carbg{
-    background-image: url("../assets/insta-mob-bg.png");;
-    background-size: cover;
-    height: 590px;
-    width: 441px;
+.insta-mob-bg{
+    background-image: url("../assets/insta-mob-bg.png");
+    height: 618px;
+    width: 454PX;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.car{
-    height: 423px;
-    width: 241px;
+.carousel{
     position: absolute;
-    top: 93px;
-    left: 143px;
-    /* z-index: 1; */
+    height: auto; 
+    top: 50px;
+    left: 22px;
+}
+.set{
+    height: auto;
+    position: absolute;
+    width: 15.4rem;
+    right: 6.5rem;
+    /* top: -1.2rem; */
 }
 
 @media  only screen and (max-width: 500px) {
@@ -44,4 +50,4 @@ border: 1px solid #ccc;
     .bottom-card{
         width: 100%;
     }
-}
+} 
