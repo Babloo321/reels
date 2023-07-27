@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import logo from "../../assets/instagram.jpeg";
@@ -10,7 +10,39 @@ import bg2 from '../../assets/bg2.jpg';
 import bg3 from '../../assets/bg3.jpg';
 import bg4 from '../../assets/bg4.jpg';
 import bg5 from '../../assets/bg5.jpg';
+
+import {AuthContex} from '../../context/auth';
+
+
 export default function login() {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [loading, setLoader] = React.useState(false);
+
+  const { login } = useContext(AuthContex);
+
+  let handleClick = async ()=> {
+    try{
+      console.log(email);
+      console.log(password);
+      setLoader(true);
+      setError('');
+      await login(email,password);
+      console.log("logged in");
+
+    }
+    catch (err) {
+      console.log("getting error", JSON.stringify(err));
+     setError("You have entered wrong password please check and try again")
+      // setError(err.code);        // it is for system error
+      // use setTimeOut to remove error after showing 2sec
+      setTimeout(() => {
+        setError('');
+      }, 5000);
+    }
+    setLoader(false);
+  }
   return (
     <div className="login-container">
 
@@ -43,6 +75,8 @@ export default function login() {
           fullWidth
           label="Email"
           variant="outlined"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         {/* Text area for the Password */}
         <TextField
@@ -53,13 +87,22 @@ export default function login() {
           label="Password"
           type="password"
           variant="outlined"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
     {/* div for error handling when email and password is not correct */}
-    <div style={{color:'red'}}>Show Error if email or password is incorrect</div>
+    {
+      error!= "" &&
+    <div style={{color:'red'}}>{error}</div>
+    }
         {/* this button for the login click */}
-        <Button variant="contained"  
-        fullWidth
-        component="span" style={{marginTop:'1rem'}}>
+        <Button
+        style={{marginTop:'1rem'}}
+        variant="contained"  
+        component="label" 
+        fullWidth 
+        onClick={handleClick}
+        >
           LogIn
         </Button>
       {/* taking a div to set the forget password if user don't have remembered password */}
