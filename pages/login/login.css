@@ -21,7 +21,7 @@ border: 1px solid #ccc;
 }
 
 .insta-mob-bg{
-    background-image: url("/reels/assets/insta-mob-bg.png");
+    background-image: url("./../../assets/insta-mob-bg.png");
     height: 618px;
     width: 454PX;
     position: relative;

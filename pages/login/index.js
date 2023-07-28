@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import logo from "../../assets/instagram.jpeg";
@@ -12,21 +12,30 @@ import bg4 from '../../assets/bg4.jpg';
 import bg5 from '../../assets/bg5.jpg';
 
 import {AuthContex} from '../../context/auth';
+import { useRouter } from "next/router";
+
 
 
 export default function login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState('');
-  const [loading, setLoader] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
-  const { login } = useContext(AuthContex);
+  const { login, user } = useContext(AuthContex);
+const router = useRouter();
+useEffect(() => {
+  if (user) {
+    //route to feeds page
+    router.push("/");
 
+  }
+},[user]);     // used 3rd variation of life cycle method
   let handleClick = async ()=> {
     try{
       console.log(email);
       console.log(password);
-      setLoader(true);
+      setLoading(true);
       setError('');
       await login(email,password);
       console.log("logged in");
@@ -41,7 +50,7 @@ export default function login() {
         setError('');
       }, 5000);
     }
-    setLoader(false);
+    setLoading(false);
   }
   return (
     <div className="login-container">
@@ -102,6 +111,7 @@ export default function login() {
         component="label" 
         fullWidth 
         onClick={handleClick}
+        disabled = {loading}
         >
           LogIn
         </Button>

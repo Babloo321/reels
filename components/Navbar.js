@@ -16,6 +16,8 @@ import Insta from '../assets/Instagram.jpeg';
 import Image from 'next/image';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
+import { AuthContex } from '@/context/auth';
+import { useRouter } from 'next/router';
 
 
 const pages = ['Products', 'Pricing', 'Blog'];
@@ -24,7 +26,8 @@ const settings = ['Profile', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const {logOut} = React.useContext(AuthContex);
+  const router = useRouter();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -39,6 +42,11 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout = (async () => {
+    await logOut();
+    router.push("/login");
+  })
 
   return (
     <AppBar position="static" className='Navbar'>
@@ -101,8 +109,18 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+              ))}
+
+              {settings.map((setting) => (
+                <MenuItem onClick={()=>{
+                  handleLogout()
+                  handleCloseUserMenu
+                
+                }}>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               ))}
             </Menu>
